@@ -1,11 +1,24 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
+import logo from "./assets/images/batterytellaLogo.png";
+import { Navbar } from "./navbar";
 
 function App() {
-  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <img src={logo} className="h-[5rem] flex justify-center m-auto"></img>
+      <input
+        type="text"
+        placeholder="Type here"
+        className="input input-bordered input-primary w-full max-w-xs"
+      />
 
-  return <div className="btn font-extrabold bg-primary">tailwind</div>;
+      <Navbar />
+      <div className="fixed bottom-0 m-2 w-screen">
+        <button className="btn btn-outline btn-accent">Button</button>
+      </div>
+    </div>
+  );
 }
 
 export default App;
