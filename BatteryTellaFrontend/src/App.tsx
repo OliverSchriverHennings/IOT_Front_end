@@ -3,6 +3,8 @@ import "./App.css";
 import logo from "./assets/images/batterytellaLogo.png";
 import { Device } from "./device";
 import { Navbar } from "./navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { DevicePage } from "./DevicePage/devicePage";
 
 function App() {
   return (
@@ -14,9 +16,17 @@ function App() {
           placeholder="Type here"
           className="input input-bordered input-primary w-full max-w-xs"
         />
-
         <Navbar />
-        <Device />
+
+        <BrowserRouter>
+          <main>
+            <Routes>
+              <Route path="/devices" element={<DevicePage />} />
+              <Route path="/stats" element={<p>No stats to see...</p>} />
+              <Route path="/prices" element={<p>No prices to see...</p>} />
+            </Routes>
+          </main>
+        </BrowserRouter>
       </div>
     </>
   );

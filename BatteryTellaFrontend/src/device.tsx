@@ -1,19 +1,25 @@
 import { BsBatteryCharging, BsFillGearFill } from "react-icons/bs";
 import { Toggle } from "./toogle";
 
-export const Device = () => {
+interface props {
+  Name: string;
+  chargedNumber: number;
+  fullchargeTime: number;
+}
+
+export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
   return (
-    <div className="card flex bg-neutral text-primary-content  p-2">
+    <div className="card flex justify-center bg-neutral text-primary-content  p-2 m-2">
       <div className="card-body">
-        <h2 className="card-title">
-          Smartcharger <BsBatteryCharging />
+        <h2 className="card-title flex justify-center">
+          {Name} <BsBatteryCharging />
         </h2>
         <progress
-          className="progress progress-primary bg-slate-50 w-56"
+          className="progress progress-primary bg-slate-50 w-56 flex justify-center"
           value="30"
           max="100"
         ></progress>
-        this device is 30% charged remaning time: 2.5 hours
+        this device is {chargedNumber}% charged remaning time: 2.5 hours
       </div>
 
       <div className="collapse">
