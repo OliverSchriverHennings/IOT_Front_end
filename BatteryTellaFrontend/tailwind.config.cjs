@@ -7,35 +7,27 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
-      "light",
-      "dark",
-      "cupcake",
-      "bumblebee",
-      "emerald",
-      "corporate",
-      "synthwave",
-      "retro",
-      "cyberpunk",
-      "valentine",
-      "halloween",
-      "garden",
-      "forest",
-      "aqua",
-      "lofi",
-      "pastel",
-      "fantasy",
-      "wireframe",
-      "black",
-      "luxury",
-      "dracula",
-      "cmyk",
-      "autumn",
-      "business",
-      "acid",
-      "lemonade",
-      "night",
-      "coffee",
-      "winter",
+      {
+        batterytella: {
+          primary: "#16a34a",
+
+          secondary: "#9a3412",
+
+          accent: "#0e7490",
+
+          neutral: "#292524",
+
+          "base-100": "#374151",
+
+          info: "#66C7FF",
+
+          success: "#87D039",
+
+          warning: "#f97316",
+
+          error: "#FF7070",
+        },
+      },
     ],
   },
 };
