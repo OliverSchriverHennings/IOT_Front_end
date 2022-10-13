@@ -9,14 +9,14 @@ interface props {
 
 export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
   return (
-    <div className="card flex justify-center bg-neutral text-primary-content  p-2 m-2">
+    <div className="card flex justify-center bg-neutral text-primary-content shadow-xl p-2 m-2">
       <div className="card-body">
         <h2 className="card-title flex justify-center">
           {Name} <BsBatteryCharging />
         </h2>
         <progress
           className="progress progress-primary bg-slate-50 w-56 flex justify-center"
-          value="30"
+          value={chargedNumber}
           max="100"
         ></progress>
         this device is {chargedNumber}% charged remaning time: 2.5 hours

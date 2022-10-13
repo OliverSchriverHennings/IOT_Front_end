@@ -7,7 +7,7 @@ export const Toggle = ({ text }: props) => {
     <div className="form-control">
       <label className="label cursor-pointer">
         <span className="label-text">{text}</span>
-        <input type="checkbox" className="toggle toggle-accent" />
+        <input type="checkbox" className="toggle toggle-primary bg-slate-200" />
       </label>
     </div>
   );
