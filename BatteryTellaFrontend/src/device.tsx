@@ -15,11 +15,11 @@ export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
           {Name} <BsBatteryCharging />
         </h2>
         <progress
-          className="progress progress-primary bg-slate-50 w-56 flex justify-center"
+          className="progress progress-primary bg-slate-50 flex justify-center"
           value={chargedNumber}
           max="100"
         ></progress>
-        this device is {chargedNumber}% charged remaning time: 2.5 hours
+        this device is {chargedNumber}% charged remaining time: 2.5 hours
       </div>
 
       <div className="collapse">
