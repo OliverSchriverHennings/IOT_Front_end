@@ -29,7 +29,7 @@ export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
         </div>
         <div className="collapse-content">
           <Toggle text="Notify me when fully charged" />
-          <Toggle text="Disable charing" />
+          <Toggle text="Disable charging" />
         </div>
       </div>
     </div>
