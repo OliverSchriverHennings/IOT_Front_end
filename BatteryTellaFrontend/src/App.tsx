@@ -24,6 +24,7 @@ function App() {
               <Route path="/devices" element={<DevicePage />} />
               <Route path="/stats" element={<p>No stats to see...</p>} />
               <Route path="/prices" element={<p>No prices to see...</p>} />
+              <Route path="" element={<DevicePage />} />
             </Routes>
           </main>
         </BrowserRouter>
