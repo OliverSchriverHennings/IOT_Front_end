@@ -1,4 +1,5 @@
 import axios from "axios";
+import { time } from "console";
 import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import internal from "stream";
@@ -7,12 +8,15 @@ import { Device } from "../device";
 interface device {
   charge: number;
   name: string;
+  id: number;
+  hoursAvaible: number[];
+  hoursToCharge: number;
 }
 
 export const DevicePage = () => {
   const [devices, setDevices] = useState<device[]>([
-    { name: "", charge: 0 },
-    { name: "", charge: 0 },
+    { name: "", charge: 404, hoursToCharge: 0, id: 0, hoursAvaible: [] },
+    { name: "", charge: 404, hoursToCharge: 0, id: 0, hoursAvaible: [] },
   ]);
 
   React.useEffect(() => {
@@ -34,13 +38,24 @@ export const DevicePage = () => {
       <Device
         Name={devices[0].name}
         chargedNumber={devices[0].charge}
-        fullchargeTime={0}
+        fullchargeTime={timeLeft(devices[0].hoursToCharge, devices[0].charge)}
       />
       <Device
         Name={devices[1].name}
         chargedNumber={devices[1].charge}
-        fullchargeTime={0}
+        fullchargeTime={timeLeft(devices[1].hoursToCharge, devices[1].charge)}
       />
     </>
   );
 };
+
+function timeLeft(fullTimeToCharge: number, charged: number) {
+  //find 100% charge time in minutes
+  let fullTimeMin = fullTimeToCharge * 60;
+  // find 1 procent
+  let timeCalc = fullTimeMin / 100;
+  // multiply by procents already charges
+  let res = charged * timeCalc;
+  // take full charge times i min (timeCalc) and subtract what is already charged (res)
+  return fullTimeMin - res;
+}

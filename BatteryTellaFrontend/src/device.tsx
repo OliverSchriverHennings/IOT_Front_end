@@ -19,7 +19,8 @@ export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
           value={chargedNumber}
           max="100"
         ></progress>
-        this device is {chargedNumber}% charged remaining time: 2.5 hours
+        this device is {chargedNumber}% charged remaining time: {fullchargeTime}{" "}
+        minutes
       </div>
 
       <div className="collapse">
