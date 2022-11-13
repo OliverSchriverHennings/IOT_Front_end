@@ -1,4 +1,5 @@
 import { BsBatteryCharging, BsFillGearFill } from "react-icons/bs";
+import { DeviceForm } from "./DevicePage/deviceForm";
 import { Toggle } from "./toogle";
 
 interface props {
@@ -31,6 +32,7 @@ export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
         <div className="collapse-content">
           <Toggle text="Notify me when fully charged" />
           <Toggle text="Disable charging" />
+          <DeviceForm />
         </div>
       </div>
     </div>
