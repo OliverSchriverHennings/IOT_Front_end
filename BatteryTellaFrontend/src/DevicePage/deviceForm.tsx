@@ -1,19 +1,19 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import makeAnimated from "react-select/animated";
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 
 interface props {
   hoursToCharge: number;
-  hoursAvailable: number[];
+  hoursAvailable: timeNumber[];
 }
 
 interface timeNumber {
-  readonly value: number;
-  readonly label: number;
+  value: number;
+  label: number;
 }
 
-const timeData: readonly timeNumber[] = [
+const timeData: timeNumber[] = [
   { value: 1, label: 1 },
   { value: 2, label: 2 },
   { value: 3, label: 3 },
@@ -45,6 +45,15 @@ export const DeviceForm = () => {
   const { register, handleSubmit } = useForm<props>();
   const onSubmit: SubmitHandler<props> = (data) => console.log(data);
 
+  const [timeChosen, setTimeChosen] = useState<number[]>([]);
+
+  const handleChange = (selectedOptions: any) => {
+    console.log("handleChange", selectedOptions);
+    setTimeChosen(selectedOptions);
+
+    console.log("timeChosen", timeChosen);
+  };
+
   return (
     <>
       <label htmlFor="my-modal-3" className="btn">
@@ -57,9 +66,7 @@ export const DeviceForm = () => {
             <label
               htmlFor="my-modal-3"
               className="btn btn-sm btn-circle absolute right-2 top-2"
-            >
-              ✕
-            </label>
+            ></label>
             <h3 className="text-lg font-bold">Edit device</h3>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -68,14 +75,17 @@ export const DeviceForm = () => {
               <label className="mt-4">Full charge time in hours</label>
               <input className="text-black" {...register("hoursToCharge")} />
               <label>which charge hours are avaible?</label>
+
               <Select
+                {...register("hoursAvailable")}
                 className="text-black"
                 closeMenuOnSelect={false}
                 components={animatedComponents}
-                defaultValue={timeData[1]}
                 isMulti
                 options={timeData}
+                onChange={handleChange}
               />
+
               <input type="submit" />
             </form>
           </div>

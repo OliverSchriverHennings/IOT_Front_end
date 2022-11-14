@@ -29,7 +29,6 @@ export const DevicePage = () => {
       })
       .then((response) => {
         setDevices(response.data);
-        console.log(devices);
       });
   }, []);
 
