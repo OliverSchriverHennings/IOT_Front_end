@@ -22,7 +22,6 @@ export const Device = ({ Name, chargedNumber, chargeTimeLeft, hoursAvailable }: 
     formattedAvailableHours.push(<div>1 fake</div>)
     formattedAvailableHours.push(<div>5 fake</div>)
     formattedAvailableHours.push(<div>7 fake</div>)
-    chargeTimeLeft = 404;
   }
 
   return (
