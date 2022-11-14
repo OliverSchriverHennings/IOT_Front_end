@@ -5,10 +5,10 @@ import { Toggle } from "./toogle";
 interface props {
   Name: string;
   chargedNumber: number;
-  fullchargeTime: number;
+  chargeTimeLeft: number;
 }
 
-export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
+export const Device = ({ Name, chargedNumber, chargeTimeLeft }: props) => {
   return (
     <div className="card flex justify-center bg-neutral text-primary-content shadow-xl p-2 m-2">
       <div className="card-body">
@@ -20,7 +20,7 @@ export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
           value={chargedNumber}
           max="100"
         ></progress>
-        this device is {chargedNumber}% charged remaining time: {fullchargeTime}{" "}
+        this device is {chargedNumber}% charged remaining time: {chargeTimeLeft}{" "}
         minutes
       </div>
 
@@ -32,6 +32,7 @@ export const Device = ({ Name, chargedNumber, fullchargeTime }: props) => {
         <div className="collapse-content">
           <Toggle text="Notify me when fully charged" />
           <Toggle text="Disable charging" />
+          <p></p>
           <DeviceForm />
         </div>
       </div>

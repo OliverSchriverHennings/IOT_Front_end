@@ -14,6 +14,7 @@ interface timeNumber {
 }
 
 const timeData: timeNumber[] = [
+  { value: 0, label: 0 },
   { value: 1, label: 1 },
   { value: 2, label: 2 },
   { value: 3, label: 3 },
@@ -37,21 +38,20 @@ const timeData: timeNumber[] = [
   { value: 21, label: 21 },
   { value: 22, label: 22 },
   { value: 23, label: 23 },
-  { value: 24, label: 24 },
 ];
 const animatedComponents = makeAnimated();
 
 export const DeviceForm = () => {
   const { register, handleSubmit } = useForm<props>();
-  const onSubmit: SubmitHandler<props> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<props> = (data) =>
+    console.log(data, timeChosen);
 
   const [timeChosen, setTimeChosen] = useState<number[]>([]);
 
   const handleChange = (selectedOptions: any) => {
     console.log("handleChange", selectedOptions);
-    setTimeChosen(selectedOptions);
-
-    console.log("timeChosen", timeChosen);
+    const times = selectedOptions.map((t: any) => t.value);
+    setTimeChosen(times);
   };
 
   return (
@@ -62,7 +62,7 @@ export const DeviceForm = () => {
       <>
         <input type="checkbox" id="my-modal-3" className="modal-toggle" />
         <div className="modal">
-          <div className="modal-box w-11/12 max-w-5xl h-1/3 overflow-hidden">
+          <div className="modal-box w-11/12 max-w-5xl h-1/2 overflow-hidden">
             <label
               htmlFor="my-modal-3"
               className="btn btn-sm btn-circle absolute right-2 top-2"
