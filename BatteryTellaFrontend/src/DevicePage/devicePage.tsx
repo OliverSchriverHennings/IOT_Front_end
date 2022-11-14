@@ -43,7 +43,7 @@ export const DevicePage = () => {
         chargedNumber={device.charge}
         chargeTimeLeft={timeLeft(device.hoursToCharge, device.charge)}
         hoursAvailable={device.hoursAvailable}
-        id={0}
+        id={device.id}
       />
     );
   });

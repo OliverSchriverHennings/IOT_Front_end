@@ -3,6 +3,7 @@ import makeAnimated from "react-select/animated";
 import Select from "react-select";
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 interface props {
   hoursToCharge: number;
@@ -49,11 +50,16 @@ const animatedComponents = makeAnimated();
 export const DeviceForm = ({ id }: input) => {
   const { register, handleSubmit } = useForm<props>();
   const onSubmit: SubmitHandler<props> = (data) => {
-    axios.patch(`http://127.0.0.1:5000/device/${id}`, {
-      hoursAvailable: timeChosen,
-      hoursToCharge: data.hoursToCharge,
-    });
-    console.log(data, timeChosen);
+    axios
+      .patch(`http://127.0.0.1:5000/device/${id}`, {
+        hoursAvailable: timeChosen,
+        hoursToCharge: data.hoursToCharge,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          showToastMessage();
+        }
+      });
   };
 
   const [timeChosen, setTimeChosen] = useState<number[]>([]);
@@ -62,6 +68,12 @@ export const DeviceForm = ({ id }: input) => {
     console.log("handleChange", selectedOptions);
     const times = selectedOptions.map((t: any) => t.value);
     setTimeChosen(times);
+  };
+
+  const showToastMessage = () => {
+    toast.success("Success Notification !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   return (
@@ -96,7 +108,7 @@ export const DeviceForm = ({ id }: input) => {
                 onChange={handleChange}
               />
 
-              <input type="submit" />
+              <input type="submit" className="button" />
             </form>
           </div>
         </div>
