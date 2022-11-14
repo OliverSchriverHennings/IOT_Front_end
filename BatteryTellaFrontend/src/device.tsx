@@ -7,9 +7,24 @@ interface props {
   chargedNumber: number;
   chargeTimeLeft: number;
   id: number;
+  hoursAvailable: number[];
 }
 
-export const Device = ({ Name, chargedNumber, chargeTimeLeft, id }: props) => {
+export const Device = ({
+  Name,
+  chargedNumber,
+  chargeTimeLeft,
+  hoursAvailable,
+  id,
+}: props) => {
+  let formattedAvailableHours: any[];
+  formattedAvailableHours = [];
+  if (hoursAvailable != null) {
+    hoursAvailable.forEach((data) => {
+      formattedAvailableHours.push(<div>{data}</div>);
+    });
+  } //Temporary Test Data
+
   return (
     <div className="card flex justify-center bg-neutral text-primary-content shadow-xl p-2 m-2">
       <div className="card-body">
@@ -21,8 +36,8 @@ export const Device = ({ Name, chargedNumber, chargeTimeLeft, id }: props) => {
           value={chargedNumber}
           max="100"
         ></progress>
-        this device is {chargedNumber}% charged remaining time: {chargeTimeLeft}{" "}
-        minutes
+        This device is {chargedNumber}% charged <br /> Remaining time:{" "}
+        {chargeTimeLeft} minutes
       </div>
 
       <div className="collapse">
@@ -33,7 +48,7 @@ export const Device = ({ Name, chargedNumber, chargeTimeLeft, id }: props) => {
         <div className="collapse-content">
           <Toggle text="Notify me when fully charged" />
           <Toggle text="Disable charging" />
-          <p></p>
+          <p>Available Hours: {formattedAvailableHours}</p>
           <DeviceForm id={id} />
         </div>
       </div>

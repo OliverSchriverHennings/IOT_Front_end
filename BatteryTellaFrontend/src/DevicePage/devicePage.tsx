@@ -9,14 +9,14 @@ interface device {
   charge: number;
   name: string;
   id: number;
-  hoursAvaible: number[];
+  hoursAvailable: number[];
   hoursToCharge: number;
 }
 
 export const DevicePage = () => {
   const [devices, setDevices] = useState<device[]>([
-    { name: "", charge: 404, hoursToCharge: 0, id: 0, hoursAvaible: [] },
-    { name: "", charge: 404, hoursToCharge: 0, id: 0, hoursAvaible: [] },
+    { name: "", charge: 404, hoursToCharge: 8, id: 0, hoursAvailable: [] },
+    { name: "", charge: 404, hoursToCharge: 8, id: 0, hoursAvailable: [] },
   ]);
 
   React.useEffect(() => {
@@ -34,22 +34,21 @@ export const DevicePage = () => {
       });
   }, []);
 
-  return (
-    <>
+  let formattedDevices: any[];
+  formattedDevices = [];
+  devices.forEach((device) => {
+    formattedDevices.push(
       <Device
-        Name={devices[0].name}
-        chargedNumber={devices[0].charge}
-        id={devices[0].id}
-        chargeTimeLeft={timeLeft(devices[0].hoursToCharge, devices[0].charge)}
+        Name={device.name}
+        chargedNumber={device.charge}
+        chargeTimeLeft={timeLeft(device.hoursToCharge, device.charge)}
+        hoursAvailable={device.hoursAvailable}
+        id={0}
       />
-      <Device
-        Name={devices[1].name}
-        id={devices[1].id}
-        chargedNumber={devices[1].charge}
-        chargeTimeLeft={timeLeft(devices[1].hoursToCharge, devices[1].charge)}
-      />
-    </>
-  );
+    );
+  });
+
+  return <>{formattedDevices}</>;
 };
 
 function timeLeft(fullTimeToCharge: number, charged: number) {
