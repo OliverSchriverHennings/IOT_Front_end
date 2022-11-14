@@ -3,7 +3,7 @@ import makeAnimated from "react-select/animated";
 import Select from "react-select";
 import axios from "axios";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 interface props {
   hoursToCharge: number;
@@ -59,6 +59,9 @@ export const DeviceForm = ({ id }: input) => {
         if (res.status === 200) {
           showToastMessage();
         }
+      })
+      .catch(() => {
+        showToastMessageError();
       });
   };
 
@@ -71,7 +74,13 @@ export const DeviceForm = ({ id }: input) => {
   };
 
   const showToastMessage = () => {
-    toast.success("Success Notification !", {
+    toast.success("Success your device is now updated!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const showToastMessageError = () => {
+    toast.error("something went wrong :(", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
@@ -84,11 +93,13 @@ export const DeviceForm = ({ id }: input) => {
       <>
         <input type="checkbox" id="my-modal-3" className="modal-toggle" />
         <div className="modal">
-          <div className="modal-box w-11/12 max-w-5xl h-1/2 overflow-hidden">
+          <div className="modal-box w-11/12 max-w-5xl h-1/2 ">
             <label
               htmlFor="my-modal-3"
-              className="btn btn-sm btn-circle absolute right-2 top-2"
-            ></label>
+              className="btn btn-sm btn-circle  absolute right-2 top-2"
+            >
+              x
+            </label>
             <h3 className="text-lg font-bold">Edit device</h3>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -108,10 +119,22 @@ export const DeviceForm = ({ id }: input) => {
                 onChange={handleChange}
               />
 
-              <input type="submit" className="button" />
+              <input type="submit" className="btn rounded-xl" />
             </form>
           </div>
         </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </>
     </>
   );

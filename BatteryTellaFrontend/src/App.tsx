@@ -5,7 +5,8 @@ import { Device } from "./device";
 import { Navbar } from "./navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DevicePage } from "./DevicePage/devicePage";
-import {PricePage} from "./PricePage/pricePage";
+import { PricePage } from "./PricePage/pricePage";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <Routes>
               <Route path="/devices" element={<DevicePage />} />
               <Route path="/stats" element={<p>No stats to see...</p>} />
-              <Route path="/prices" element={<PricePage/>} />
+              <Route path="/prices" element={<PricePage />} />
               <Route path="" element={<DevicePage />} />
             </Routes>
           </main>
