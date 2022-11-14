@@ -39,10 +39,12 @@ export const DevicePage = () => {
       <Device
         Name={devices[0].name}
         chargedNumber={devices[0].charge}
+        id={devices[0].id}
         chargeTimeLeft={timeLeft(devices[0].hoursToCharge, devices[0].charge)}
       />
       <Device
         Name={devices[1].name}
+        id={devices[1].id}
         chargedNumber={devices[1].charge}
         chargeTimeLeft={timeLeft(devices[1].hoursToCharge, devices[1].charge)}
       />

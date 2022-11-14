@@ -1,7 +1,8 @@
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import makeAnimated from "react-select/animated";
-import React, { useState } from "react";
 import Select from "react-select";
+import axios from "axios";
+import { useState } from "react";
 
 interface props {
   hoursToCharge: number;
@@ -11,6 +12,10 @@ interface props {
 interface timeNumber {
   value: number;
   label: number;
+}
+
+interface input {
+  id: number;
 }
 
 const timeData: timeNumber[] = [
@@ -41,10 +46,15 @@ const timeData: timeNumber[] = [
 ];
 const animatedComponents = makeAnimated();
 
-export const DeviceForm = () => {
+export const DeviceForm = ({ id }: input) => {
   const { register, handleSubmit } = useForm<props>();
-  const onSubmit: SubmitHandler<props> = (data) =>
+  const onSubmit: SubmitHandler<props> = (data) => {
+    axios.patch(`http://127.0.0.1:5000/device/${id}`, {
+      hoursAvailable: timeChosen,
+      hoursToCharge: data.hoursToCharge,
+    });
     console.log(data, timeChosen);
+  };
 
   const [timeChosen, setTimeChosen] = useState<number[]>([]);
 

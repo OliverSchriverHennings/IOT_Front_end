@@ -6,9 +6,10 @@ interface props {
   Name: string;
   chargedNumber: number;
   chargeTimeLeft: number;
+  id: number;
 }
 
-export const Device = ({ Name, chargedNumber, chargeTimeLeft }: props) => {
+export const Device = ({ Name, chargedNumber, chargeTimeLeft, id }: props) => {
   return (
     <div className="card flex justify-center bg-neutral text-primary-content shadow-xl p-2 m-2">
       <div className="card-body">
@@ -33,7 +34,7 @@ export const Device = ({ Name, chargedNumber, chargeTimeLeft }: props) => {
           <Toggle text="Notify me when fully charged" />
           <Toggle text="Disable charging" />
           <p></p>
-          <DeviceForm />
+          <DeviceForm id={id} />
         </div>
       </div>
     </div>
