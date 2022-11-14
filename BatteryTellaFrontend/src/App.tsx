@@ -5,6 +5,7 @@ import { Device } from "./device";
 import { Navbar } from "./navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DevicePage } from "./DevicePage/devicePage";
+import {PricePage} from "./PricePage/pricePage";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
             <Routes>
               <Route path="/devices" element={<DevicePage />} />
               <Route path="/stats" element={<p>No stats to see...</p>} />
-              <Route path="/prices" element={<p>No prices to see...</p>} />
+              <Route path="/prices" element={<PricePage/>} />
               <Route path="" element={<DevicePage />} />
             </Routes>
           </main>
