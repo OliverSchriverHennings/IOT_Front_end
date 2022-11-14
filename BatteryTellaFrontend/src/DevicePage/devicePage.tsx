@@ -44,6 +44,7 @@ export const DevicePage = () => {
         chargeTimeLeft={timeLeft(device.hoursToCharge, device.charge)}
         hoursAvailable={device.hoursAvailable}
         id={device.id}
+        fullChargeTime={device.hoursToCharge}
       />
     );
   });
