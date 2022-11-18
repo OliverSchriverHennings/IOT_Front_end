@@ -9,7 +9,7 @@ interface props {
 export const Price = ({ price, time }: props) => {
     return (
         <div>
-            {time} : {price} kr.
+            {time} : {price} kr/MWh
         </div>
 
     );
