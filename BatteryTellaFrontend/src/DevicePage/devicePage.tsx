@@ -3,7 +3,7 @@ import { time } from "console";
 import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import internal from "stream";
-import { Device } from "../device";
+import { Device } from "./device";
 
 interface device {
   charge: number;
@@ -28,7 +28,7 @@ export const DevicePage = () => {
         },
       })
       .then((response) => {
-        if (response.data !== null) {
+        if (response.status === 200) {
           setDevices(response.data);
         }
       });

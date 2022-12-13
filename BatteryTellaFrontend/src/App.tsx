@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/images/batterytellaLogo.png";
-import { Device } from "./device";
-import { Navbar } from "./navbar";
+import { Device } from "./DevicePage/device";
+import { Navbar } from "./core/navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DevicePage } from "./DevicePage/devicePage";
 import { PricePage } from "./PricePage/pricePage";

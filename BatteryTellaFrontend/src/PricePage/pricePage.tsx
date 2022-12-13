@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useCallback, useEffect, useState } from "react";
-import { Price } from "../price";
+import { Price } from "./price";
 
 interface price {
   price: number;

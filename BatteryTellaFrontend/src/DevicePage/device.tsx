@@ -1,6 +1,6 @@
 import { BsBatteryCharging, BsFillGearFill } from "react-icons/bs";
-import { DeviceForm } from "./DevicePage/deviceForm";
-import { Toggle } from "./toogle";
+import { DeviceForm } from "./deviceForm";
+import { Toggle } from "../toogle";
 
 interface props {
   Name: string;
@@ -17,7 +17,7 @@ export const Device = ({
   chargeTimeLeft,
   hoursAvailable,
   id,
-  fullChargeTime
+  fullChargeTime,
 }: props) => {
   let formattedAvailableHours: any[];
   formattedAvailableHours = [];

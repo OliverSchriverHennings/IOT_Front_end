@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Device } from "./device";
+import { Device } from "../DevicePage/device";
 
 export const Navbar = () => {
   const [count, setCount] = useState(1);
